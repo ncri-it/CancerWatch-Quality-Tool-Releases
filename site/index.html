@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>CancerWatch Quality Tool</title>
+<meta name="description" content="Download the CancerWatch Quality Tool, a free desktop application that validates cancer registry data files against the ENCR protocol rules before submission to ECIS, entirely on your own computer.">
+<link rel="canonical" href="https://ncri-it.github.io/CancerWatch-Quality-Tool-Releases/">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CancerWatch Quality Tool">
+<meta property="og:description" content="Quality assurance for European cancer registry data. Validate registry submissions against the ENCR protocol rules before you send them to ECIS, entirely on your own computer.">
+<meta property="og:url" content="https://ncri-it.github.io/CancerWatch-Quality-Tool-Releases/">
+<meta property="og:image" content="https://ncri-it.github.io/CancerWatch-Quality-Tool-Releases/img/shot-home.png">
+<meta property="og:image:width" content="1426">
+<meta property="og:image:height" content="742">
+<meta property="og:image:alt" content="Home page of the CancerWatch Quality Tool">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="page">
+<a class="skip" href="#download">Skip to download</a>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="#top" class="brand" aria-label="CancerWatch home">
+        <img src="./img/logo.png" alt="" width="40" height="35">
+        <picture>
+          <source srcset="./img/wordmark-light.png" media="(prefers-color-scheme: dark)">
+          <img class="brand-wordmark" src="./img/wordmark.png" alt="CancerWatch" width="172" height="28">
+        </picture>
+        <span class="brand-sub">Quality Tool</span>
+      </a>
+      <nav aria-label="Page sections">
+        <div class="nav-desktop">
+          <a href="#download">Download</a>
+          <a href="#how">How it works</a>
+          <a href="#about">About</a>
+          <a href="#requirements">Requirements</a>
+          <a href="https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases">Release notes</a>
+          <a href="https://cancerwatch.eu" class="nav-ext">cancerwatch.eu <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg></a>
+        </div>
+        <details class="nav-mobile">
+          <summary>Menu <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+          <div class="nav-menu">
+            <a href="#download">Download</a>
+            <a href="#how">How it works</a>
+            <a href="#about">About</a>
+            <a href="#requirements">Requirements</a>
+            <a href="https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases">Release notes</a>
+            <a href="https://cancerwatch.eu" class="nav-ext">cancerwatch.eu <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg></a>
+          </div>
+        </details>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+  <section id="download" class="hero on-navy">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">CancerWatch Quality Tool</p>
+        <h1>Quality assurance for European cancer registry data</h1>
+        <p class="hero-lede">Validate registry submissions against the ENCR protocol rules before you send them to ECIS: errors, warnings and data-quality indicators in a single run, entirely on your own computer.</p>
+      </div>
+      <div class="dl-row">
+        <a id="dl-windows" href="https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases/latest/download/ECIS.CancerWatchQualityTool-win-Setup.exe" class="dl dl-primary"><span class="dl-title">Download for Windows</span><span class="meta">Version {{VERSION}} · {{RELEASE_DATE}} · {{WINDOWS_SIZE}}<br>Windows 10 or 11, 64-bit, no administrator rights needed</span></a>
+<!--MACOS_AVAILABLE-->
+        <a id="dl-macos" href="https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases/latest/download/ECIS.CancerWatchQualityTool-osx-Setup.pkg" class="dl dl-secondary"><span class="dl-title">Download for macOS</span><span class="meta">Version {{VERSION}} · {{RELEASE_DATE}} · {{MACOS_SIZE}}<br>macOS 14 Sonoma or later, signed and notarised</span></a>
+<!--/MACOS_AVAILABLE-->
+<!--MACOS_COMING-->
+        <div class="dl dl-soon"><span class="dl-title">Download for macOS <span class="dl-badge">Coming soon</span></span><span class="meta">The macOS version is in preparation and will appear here when it is released<br>macOS 14 Sonoma or later, signed and notarised</span></div>
+<!--/MACOS_COMING-->
+        <a id="dl-linux" href="https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases/latest/download/ECIS.CancerWatchQualityTool.AppImage" class="dl dl-secondary"><span class="dl-title">Download for Linux</span><span class="meta">Version {{VERSION}} · {{RELEASE_DATE}} · {{LINUX_SIZE}}<br>AppImage, Ubuntu 22.04 or later and other glibc distributions</span></a>
+      </div>
+      <p class="hero-note">All releases and release notes on <a href="https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases">GitHub</a>.</p>
+      <ul class="trust">
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4DE5F" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Patient data never leaves your computer</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4DE5F" stroke-width="2" aria-hidden="true"><path d="M2 2l20 20M9 9.5A9 9 0 0 1 21 11M5 13a6 6 0 0 1 2-2M9 16.5a3 3 0 0 1 5 0"></path><circle cx="12" cy="20" r="1"></circle></svg>No internet connection required</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4DE5F" stroke-width="2" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"></path></svg>Free and open source, EUPL 1.2 licence</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2 id="how-h">How it works</h2>
+        <p class="lede">The tool walks a submission through five numbered steps, the same order as the stepper inside the app. Each screenshot below is the real page at that step.</p>
+      </div>
+
+      <div class="step step-first">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">1</span>
+          <h3>Start from the home page</h3>
+          <p>Every main page is one click away from the home screen, and the navigation drawer stays available on every page. A Getting Started guide inside the tool explains how to prepare a file.</p>
+        </div>
+        <div class="step-figure step-figure-stack">
+          <figure><img class="shot" src="./img/shot-home.png" alt="Home page of the CancerWatch Quality Tool" width="1426" height="742"><figcaption>Home page with access to all the main pages</figcaption></figure>
+          <div class="shot-pair">
+            <figure><img class="shot" src="./img/shot-drawer.png" alt="Navigation drawer open beside the home page" width="1426" height="742"><figcaption>Navigation drawer, available on every page</figcaption></figure>
+            <figure><img class="shot" src="./img/shot-getting-started.png" alt="Getting Started guide" width="1426" height="742"><figcaption>Getting Started guide inside the tool</figcaption></figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="step step-rev">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">2</span>
+          <h3>Validate against ENCR protocols</h3>
+          <p>Choose the protocol, drop in the file and run. Every current ECIS incidence and survival protocol is supported, with files up to 3 GB.</p>
+        </div>
+        <figure class="step-figure"><img class="shot" src="./img/shot-validate.png" alt="Validate page with a run in progress" width="1426" height="742"><figcaption>Validation in progress on an incidence submission</figcaption></figure>
+      </div>
+
+      <div class="step">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">3</span>
+          <h3>Read the results summary</h3>
+          <p>A verdict for the whole file, how many records are clean, and a summary by error code with the most frequent first.</p>
+        </div>
+        <figure class="step-figure"><img class="shot" src="./img/shot-summary.png" alt="Results Summary page" width="1426" height="742"><figcaption>Results summary: a high-level picture of the validation messages</figcaption></figure>
+      </div>
+
+      <div class="step step-rev">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">4</span>
+          <h3>Fix the records that need it</h3>
+          <p>A detail view down to the record and field, with corrective-action guidance for each code.</p>
+        </div>
+        <figure class="step-figure"><img class="shot" src="./img/shot-detail.png" alt="Results Detail page with the record inspector" width="1426" height="742"><figcaption>Results detail: which lines triggered which messages, the fields involved and how to fix them</figcaption></figure>
+      </div>
+
+      <div class="step">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">5</span>
+          <h3>Check the data-quality indicators</h3>
+          <p>A KPI dashboard with an overall quality score and drill-down on each indicator, showing how it is calculated and where the thresholds sit.</p>
+        </div>
+        <div class="step-figure step-figure-stack">
+          <figure><img class="shot" src="./img/shot-kpi.png" alt="KPI dashboard scorecard" width="1426" height="742"><figcaption>KPI dashboard with an overall quality score</figcaption></figure>
+          <figure><img class="shot" src="./img/shot-kpi-drill.png" alt="KPI drill-down drawer" width="1426" height="742"><figcaption>KPI drill-down explaining how each indicator is calculated</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" aria-label="Built for everyone">
+    <div class="wrap features-inner">
+      <p class="features-title">Built for everyone</p>
+      <ul class="features-list">
+        <li>Light and dark themes</li>
+        <li>Zoom to 200%</li>
+        <li>Keyboard-only operation</li>
+        <li>Screen reader support</li>
+        <li>WCAG 2.1 AA</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-h">
+    <div class="wrap about-inner">
+      <h2 id="about-h">About CancerWatch</h2>
+      <div class="about-body">
+        <p>CancerWatch is a Joint Action supporting Europe's Beating Cancer Plan. Its primary goal is to improve the quality and timeliness of cancer registry data collected by the members of the European Network of Cancer Registries. By innovating registration processes and addressing data disparities, CancerWatch will make more accurate and comparable insights available through the European Cancer Information System (ECIS) and the new European Health Data Space.</p>
+        <p>The Quality Tool is intended for population-based cancer registries that submit data to ECIS. It is downloaded and run on the user's own computer, with no internet connection, to assess a data file before submission and to feed performance indicators back into the registry's overall data quality work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="requirements" aria-labelledby="req-h">
+    <div class="wrap req-inner">
+      <h2 id="req-h">System requirements</h2>
+      <div class="req-groups">
+        <div class="req-group">
+          <h3>Hardware, all platforms</h3>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th scope="col">Component</th><th scope="col">Minimum</th><th scope="col">Recommended</th></tr></thead>
+              <tbody>
+                <tr><td>Processor</td><td data-label="Minimum">64-bit x64, 2 cores</td><td data-label="Recommended">4 or more cores. Validation runs in parallel across every core, so more cores make large files faster.</td></tr>
+                <tr><td>Memory</td><td data-label="Minimum">4 GB</td><td data-label="Recommended">8 GB or more. The app runs three processes plus a web view and holds up to 100,000 records in memory at a time; memory use does not grow with file size.</td></tr>
+                <tr><td>Disk, to install</td><td data-label="Minimum">About 250 MB</td><td data-label="Recommended">1 GB</td></tr>
+                <tr><td>Disk, everyday use</td><td data-label="Minimum">Varies with the size of the registry data</td><td data-label="Recommended">At least 10 GB free. The largest file the app accepts, 3 GB, needs three times its size, 9 GB, free.</td></tr>
+                <tr><td>Display</td><td data-label="Minimum">1280 x 720</td><td data-label="Recommended">1920 x 1080</td></tr>
+                <tr><td>Network</td><td data-label="Minimum">None needed. Everything runs on the local machine; the app only talks to itself over localhost, so security software must allow that.</td><td data-label="Recommended">Internet access only if you use the automatic update checks.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <fieldset class="req-group os-req">
+          <legend class="sr-only">Operating system</legend>
+          <input type="radio" name="os" id="os-windows" class="os-radio sr-only" checked>
+          <input type="radio" name="os" id="os-macos" class="os-radio sr-only">
+          <input type="radio" name="os" id="os-linux" class="os-radio sr-only">
+          <div class="seg-group">
+            <label class="seg" for="os-windows">Windows</label>
+            <label class="seg" for="os-macos">macOS</label>
+            <label class="seg" for="os-linux">Linux</label>
+          </div>
+          <div class="os-panel os-panel-windows">
+            <h3>Windows</h3>
+            <ul class="req">
+              <li>Windows 10 or 11, 64-bit. Windows 10 is only realistic with Extended Security Updates, since mainstream support ended in October 2025</li>
+              <li>Microsoft Edge WebView2 Runtime (standard on Windows 11 and up-to-date Windows 10)</li>
+              <li>No administrator rights needed; the installer uses a per-user location</li>
+            </ul>
+          </div>
+          <div class="os-panel os-panel-macos">
+            <h3>macOS</h3>
+            <ul class="req">
+              <li>macOS 14 Sonoma or later, Apple silicon or Intel</li>
+              <li>The app is signed with an Apple Developer ID and notarised, so it opens without Gatekeeper warnings</li>
+            </ul>
+          </div>
+          <div class="os-panel os-panel-linux">
+            <h3>Linux</h3>
+            <ul class="req">
+              <li>A glibc desktop distribution that .NET 10 supports: Ubuntu 22.04 or 24.04, Debian 12, Fedora, RHEL 8, 9 or 10, openSUSE Leap 15.6. Alpine and other musl-based distributions will not work</li>
+              <li>A graphical desktop session, X11 or Wayland</li>
+              <li>Packages: libwebkit2gtk-4.1 and GTK 3, and libicu</li>
+              <li>Some distributions need libfuse2 to run AppImages, and the file must be marked executable (chmod +x)</li>
+            </ul>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </section>
+
+  <section class="more" aria-labelledby="more">
+    <div class="wrap more-inner">
+      <h2 id="more">Learn more</h2>
+      <ul class="tiles">
+        <li><a href="https://commission.europa.eu/topics/public-health/european-health-union/cancer-plan-europe_en" class="tile"><span class="tile-logo"><img src="./img/logo-ec.svg" alt="European Commission"></span>Europe's Beating Cancer Plan</a></li>
+        <li><a href="https://ecis.jrc.ec.europa.eu/" class="tile"><span class="tile-logo"><img src="./img/logo-ec.svg" alt="European Commission"></span>European Cancer Information System</a></li>
+        <li><a href="https://health.ec.europa.eu/ehealth-digital-health-and-care/european-health-data-space-regulation-ehds_en" class="tile"><span class="tile-logo"><img src="./img/logo-ec.svg" alt="European Commission"></span>European Health Data Space</a></li>
+        <li><a href="https://encr.eu/" class="tile"><span class="tile-logo"><img src="./img/logo-encr.svg" alt=""></span>European Network of Cancer Registries</a></li>
+        <li><a href="https://www.iarc.who.int/" class="tile"><span class="tile-logo"><img src="./img/logo-who.svg" alt="International Agency for Research on Cancer, World Health Organization"></span>International Agency for Research on Cancer</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="accessibility" aria-labelledby="a11y-h">
+    <div class="wrap">
+     <div class="statement">
+      <h2 id="a11y-h">Accessibility statement</h2>
+      <p>The National Cancer Registry Ireland (NCRI) is committed to making this website accessible, in accordance with the European Union (Accessibility of Websites and Mobile Applications of Public Sector Bodies) Regulations 2020. This statement applies to this download page. The CancerWatch Quality Tool itself carries its own statement, on its Accessibility page inside the application.</p>
+      <h3>Compliance status</h3>
+      <p>This website is fully compliant with the <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG) 2.1</a> Level AA. The download files and the release pages on GitHub are provided by GitHub and are outside the scope of this statement.</p>
+      <h3>Non-accessible content</h3>
+      <p>There is no known non-accessible content on this page.</p>
+      <h3>Preparation of this statement</h3>
+      <p>This statement was prepared on 13 October 2026. It is based on a review of the page using manual keyboard checks and automated checks of colour contrast and the accessibility tree.</p>
+      <h3>Feedback and contact</h3>
+      <p>If you find a barrier on this page, or need any of its content in another format, email <a href="mailto:cancerwatch@ncri.ie">cancerwatch@ncri.ie</a> or write to the National Cancer Registry Ireland, Building 6800, Cork Airport Business Park, Kinsale Road, Cork, T12 CDF7, Ireland. We aim to respond within 15 business days.</p>
+      <h3>Enforcement procedure</h3>
+      <p>If you are not satisfied with our response, you can complain to the <a href="https://www.ombudsman.ie/">Office of the Ombudsman</a>.</p>
+     </div>
+    </div>
+  </section>
+
+  </main>
+  <footer class="site-footer on-navy">
+    <div class="wrap footer-inner">
+      <div class="footer-about">
+        <img class="eu-mark" src="./img/eu-mark.png" alt="Co-funded by the European Union" width="195" height="47">
+        <p>Developed by the National Cancer Registry Ireland for the CancerWatch Joint Action.</p>
+        <p class="footer-muted">Licensed under the European Union Public Licence, EUPL 1.2.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="mailto:cancerwatch@ncri.ie">Support: cancerwatch@ncri.ie</a></li>
+        <li><a href="https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases">Releases on GitHub</a></li>
+        <li><a href="#accessibility">Accessibility statement</a></li>
+        <li><a href="https://cancerwatch.eu">cancerwatch.eu</a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+<script>
+// Optional OS detection: makes the visitor's platform the primary (green) download and
+// preselects its requirements. Without JavaScript, Windows stays primary.
+(function () {
+  var ua = navigator.userAgent;
+  var os = /Macintosh|Mac OS X/.test(ua) && !/iPhone|iPad/.test(ua) && navigator.maxTouchPoints < 2 ? "macos"
+         : /Linux|X11/.test(ua) && !/Android|CrOS/.test(ua) ? "linux" : "";
+  if (!os) return;
+  var current = document.querySelector(".dl-primary");
+  var next = document.getElementById("dl-" + os);
+  if (!current || !next || next === current) return;
+  current.classList.replace("dl-primary", "dl-secondary");
+  next.classList.replace("dl-secondary", "dl-primary");
+  var radio = document.getElementById("os-" + os);
+  if (radio) radio.checked = true;
+})();
+</script>
+</body>
+</html>
