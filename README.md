@@ -74,3 +74,50 @@ A guide to getting started using this application is contained within the tool.
 | Windows | Coming soon... |
 | Linux | Coming soon... |
 | Mac | Coming soon... |
+
+## The download page
+
+The public download page at https://ncri-it.github.io/CancerWatch-Quality-Tool-Releases/ is the
+static site in `site/`: plain HTML and CSS, no framework, no build step beyond filling in the
+release details. `site/index.html` is a template. It carries five placeholders,
+`{{VERSION}}`, `{{RELEASE_DATE}}`, `{{WINDOWS_SIZE}}`, `{{MACOS_SIZE}}` and `{{LINUX_SIZE}}`,
+and the three download buttons link to the fixed `releases/latest/download/<asset>` URLs, so
+the page never needs editing for a new release.
+
+### Deploying
+
+The _Deploy download page_ workflow (`.github/workflows/deploy-pages.yml`) reads the latest
+published release with `gh api`, fills the placeholders through `scripts/build-page.sh`, and
+deploys the result to GitHub Pages. It needs the repository's Pages source set to _GitHub Actions_
+(Settings, then Pages); until that switch is made, `_config.yml` still builds this README as the
+site. The workflow runs on manual dispatch; the `release: published`
+trigger is commented out in the workflow until the first live page has been checked. The
+workflow fails if the Windows or Linux installer is missing from the latest release. The macOS
+installer is optional: while a release has none, the build keeps the "Coming soon" slot in the
+template (the block between the `MACOS_COMING` markers) instead of the download button (the
+`MACOS_AVAILABLE` block), and the button appears automatically on the first deploy after a
+release carries the file.
+
+To preview locally, build with any values and serve the output folder. Leave `MACOS_SIZE` out
+to see the coming-soon state:
+
+```bash
+VERSION=2.1.1 RELEASE_DATE="12 Oct 2026" WINDOWS_SIZE="98 MB" LINUX_SIZE="104 MB" MACOS_SIZE="101 MB" bash scripts/build-page.sh site build
+```
+
+### Updating the screenshots
+
+The eight screenshots live in `site/img/shot-*.png`, each 1426 x 742 pixels, captured from the
+application window in the light theme. To update one, replace the file under the same name and
+check the `alt` text and caption in `site/index.html` still describe it. Every screenshot must
+show synthetic data only: no real patient, tumour or registry identifiers. Rendered previews of
+the whole page are not kept in the repository.
+
+### Other notes
+
+- Fonts: the same two Roboto files the application ships (variable weight 300 to 700, latin and latin-ext) are self-hosted under `site/fonts/` (SIL Open Font License,
+  `site/fonts/LICENSE.txt`). The page makes no third-party requests.
+- The support address, cancerwatch@ncri.ie, appears twice in `site/index.html`, in the
+  statement and the footer.
+- The accessibility statement at the foot of the page carries the date it was last reviewed.
+  Re-check it whenever the page changes.

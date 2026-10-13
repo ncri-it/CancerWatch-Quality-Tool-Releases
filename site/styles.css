@@ -1,0 +1,296 @@
+/* CancerWatch Quality Tool download page.
+   Colours are the application's own tokens. Light values sit on :root; the dark scheme
+   redefines only the tokens that change, under prefers-color-scheme. The hero gradient,
+   the lime accent and the green primary button are the same in both schemes. */
+
+:root {
+  color-scheme: light dark;
+
+  /* The palette: the only colour literals in the stylesheet, identical in both schemes.
+     Everything below, and every rule, refers to these by name. */
+  --navy-deepest: #061220;
+  --navy-deep: #0B1C2D;
+  --navy-tide: #12314E;
+  --navy: #1A5276;
+  --sky: #2E9BD6;
+  --lime: #95BF30;
+  --lime-bright: #B4DE5F;
+  --forest: #3E7226;
+  --forest-deep: #2F5A1C;
+  --ice: #A8D8EC;
+  --ice-pale: #EAF4FB;
+  --ink-on-navy: #C8E6F5;
+  --muted-on-navy: #88B8D0;
+  --white: #fff;
+
+  /* Scheme-dependent tokens, light values */
+  --bg: var(--white);
+  --text: var(--navy-deep);
+  --heading: var(--navy-deep);
+  --text-muted: var(--navy-tide);
+  --link: var(--navy);
+  --link-hover: var(--navy-tide);
+  --focus: var(--navy);
+  --line: var(--ice);
+  --rule: var(--ice);
+  --surface-tint: var(--ice-pale);
+  --control-border: var(--navy);
+  --control-bg: var(--white);
+  --control-text: var(--navy);
+  --control-on-bg: var(--navy);
+  --control-on-text: var(--white);
+  --control-on-border: var(--navy);
+  --num-bg: var(--navy);
+  --num-text: var(--white);
+  --th-bg: var(--ice-pale);
+  --th-text: var(--navy-tide);
+  --brand-sub: var(--navy);
+  --shot-shadow: 0 8px 28px rgba(11, 28, 45, .12);
+  --footer-bg: var(--navy-deep);
+  --footer-border: 0;
+  --tile-logo-bg: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--navy-deep);
+    --text: var(--ink-on-navy);
+    --heading: var(--white);
+    --text-muted: var(--ice);
+    --link: var(--ice);
+    --link-hover: var(--white);
+    --focus: var(--lime-bright);
+    --line: var(--navy);
+    --rule: var(--navy-tide);
+    --surface-tint: var(--navy-tide);
+    --control-border: var(--muted-on-navy);
+    --control-bg: transparent;
+    --control-text: var(--ink-on-navy);
+    --control-on-bg: var(--ice);
+    --control-on-text: var(--navy-deep);
+    --control-on-border: var(--ice);
+    --num-bg: var(--sky);
+    --num-text: var(--navy-deep);
+    --th-bg: var(--navy-tide);
+    --th-text: var(--ink-on-navy);
+    --brand-sub: var(--muted-on-navy);
+    --shot-shadow: 0 8px 28px rgba(0, 0, 0, .45);
+    --footer-bg: var(--navy-deepest);
+    --footer-border: 1px solid var(--navy-tide);
+    --tile-logo-bg: var(--white);
+  }
+}
+
+/* Roboto, self-hosted: the same two variable-weight files the application ships
+   (wwwroot/fonts in the app repo), latin and latin-ext, weights 300 to 700, no italic.
+   SIL Open Font License, see fonts/LICENSE.txt. */
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(./fonts/roboto-normal-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(./fonts/roboto-normal-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Base */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+section[id], main section { scroll-margin-top: 24px; }
+body { margin: 0; font-family: Roboto, "Segoe UI", system-ui, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); }
+a { color: var(--link); }
+a:hover { color: var(--link-hover); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.on-navy a:focus-visible, .on-navy button:focus-visible { outline-color: var(--lime-bright); }
+.on-navy a { color: var(--ink-on-navy); }
+.on-navy a:hover { color: var(--white); }
+h2 { font-size: 28px; line-height: 1.25; margin: 0 0 12px; font-weight: 700; color: var(--heading); }
+h3 { font-size: 20px; line-height: 1.3; margin: 0 0 8px; font-weight: 700; color: var(--heading); }
+p { margin: 0; }
+figcaption { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+.page { width: 100%; min-height: 100%; display: flex; flex-direction: column; }
+.wrap { max-width: 1200px; margin: 0 auto; }
+
+/* Visually hidden, still available to assistive technology and the keyboard */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: -1px; padding: 0; border: 0; }
+
+/* Skip link */
+.skip { position: absolute; left: 16px; top: -80px; z-index: 10; padding: 10px 16px; background: var(--lime); color: var(--navy-deep); font-weight: 700; border-radius: 8px; text-decoration: none; }
+.skip:focus { top: 16px; }
+
+/* Header and navigation */
+.site-header { border-bottom: 1px solid var(--rule); background: var(--bg); }
+.nav { position: relative; max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; }
+.nav a { text-decoration: none; font-weight: 500; padding: 10px 4px; display: inline-block; min-height: 44px; box-sizing: border-box; }
+.nav .brand { display: flex; align-items: center; gap: 14px; padding: 0; min-width: 0; }
+.brand img { display: block; }
+.brand-sub { font-size: 14px; color: var(--brand-sub); font-weight: 500; border-left: 1px solid var(--line); padding-left: 14px; line-height: 1.2; }
+.nav a.nav-ext { font-size: 14px; font-weight: 400; display: inline-flex; align-items: center; gap: 6px; }
+.nav-desktop { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; }
+.nav nav a { position: relative; }
+.nav nav a::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: 6px; height: 2px; background: var(--lime); transform: scaleX(0); transform-origin: left; transition: transform .15s ease; }
+.nav nav a:hover::after, .nav nav a:focus-visible::after { transform: scaleX(1); }
+.nav-mobile { display: none; }
+.nav-mobile summary { list-style: none; cursor: pointer; font-weight: 500; padding: 10px 14px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px; border: 2px solid var(--control-border); border-radius: 8px; color: var(--control-text); }
+.nav-mobile summary::-webkit-details-marker { display: none; }
+.nav-mobile[open] summary { border-color: var(--lime); }
+/* The menu hangs from the header bar, not the button, so it stays inside the viewport when
+   the button wraps under the brand on the narrowest phones. */
+.nav-menu { position: absolute; right: 24px; top: calc(100% - 6px); z-index: 5; min-width: 240px; display: flex; flex-direction: column; gap: 2px; padding: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, .25); }
+.nav-menu a { padding: 10px 12px; }
+
+/* Hero and downloads */
+.hero { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-tide) 55%, var(--navy) 100%); color: var(--ink-on-navy); }
+#download { padding: 72px 24px 56px; }
+.hero-inner { display: flex; flex-direction: column; gap: 32px; }
+.hero-copy { max-width: 820px; display: flex; flex-direction: column; gap: 14px; }
+.eyebrow { font-size: 14px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--lime-bright); }
+.hero h1 { margin: 0; font-size: 48px; line-height: 1.12; font-weight: 700; color: var(--white); }
+.hero-lede { font-size: 19px; line-height: 1.55; color: var(--ink-on-navy); }
+.dl-row { display: flex; flex-wrap: wrap; gap: 16px; }
+.dl { display: flex; flex-direction: column; gap: 4px; flex: 1 1 300px; min-height: 72px; padding: 14px 22px; border-radius: 8px; text-decoration: none; box-sizing: border-box; font-weight: 500; }
+/* The download buttons sit inside .on-navy, whose link colour rule would otherwise win,
+   so their colours are set at the same depth. */
+.dl-primary, .on-navy .dl-primary { background: var(--forest); color: var(--white); border: 2px solid var(--lime); }
+.dl-primary:hover, .on-navy .dl-primary:hover { background: var(--forest-deep); border-color: var(--lime-bright); color: var(--white); }
+.dl-secondary, .on-navy .dl-secondary { background: transparent; color: var(--ink-on-navy); border: 2px solid var(--muted-on-navy); }
+.dl-secondary:hover, .on-navy .dl-secondary:hover { border-color: var(--white); color: var(--white); }
+.dl-title { font-size: 18px; }
+/* The slot a platform takes before its installer exists: same box, dashed edge, not a link. */
+.dl-soon { border: 2px dashed var(--muted-on-navy); color: var(--ink-on-navy); }
+.dl-badge { display: inline-block; vertical-align: 2px; margin-left: 6px; padding: 2px 10px; border-radius: 999px; background: var(--lime); color: var(--navy-deep); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.dl .meta { font-size: 13px; font-weight: 400; line-height: 1.45; }
+.hero-note { font-size: 15px; color: var(--ink-on-navy); }
+.trust { list-style: none; margin: 8px 0 0; padding: 24px 0 0; border-top: 1px solid rgba(168, 216, 236, .35); display: flex; flex-wrap: wrap; gap: 16px 48px; font-size: 15px; color: var(--ink-on-navy); }
+.trust li { display: flex; align-items: center; gap: 10px; }
+#download p a, .site-footer ul a { display: inline-block; padding: 14px 0; margin: -14px 0; }
+
+/* Entrance animation for the hero, disabled under reduced motion */
+@keyframes cw-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.hero-copy > *, .hero-inner > *:not(:first-child) { animation: cw-rise .45s ease-out both; }
+.hero-copy > *:nth-child(2) { animation-delay: .06s; }
+.hero-copy > *:nth-child(3) { animation-delay: .12s; }
+.hero-inner > *:nth-child(2) { animation-delay: .2s; }
+.hero-inner > *:nth-child(3) { animation-delay: .26s; }
+.hero-inner > *:nth-child(4) { animation-delay: .32s; }
+.dl { transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease, border-color .15s ease; }
+.dl-primary:hover, .dl-primary:focus-visible { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy > *, .hero-inner > *:not(:first-child) { animation: none; }
+  .dl, .nav nav a::after { transition: none; }
+}
+
+/* How it works */
+#how { padding: 64px 24px 40px; }
+.section-intro { max-width: 760px; display: flex; flex-direction: column; gap: 8px; padding-bottom: 32px; }
+.lede { font-size: 17px; color: var(--text-muted); }
+.step { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; padding: 40px 0; border-top: 1px solid var(--rule); }
+.step-first { border-top: 0; }
+.step-rev { flex-direction: row-reverse; }
+.step-text { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.step-figure { flex: 2 1 560px; min-width: 0; margin: 0; }
+.step-figure figure { margin: 0; }
+.step-figure-stack { display: flex; flex-direction: column; gap: 20px; }
+.shot-pair { display: flex; flex-wrap: wrap; gap: 20px; }
+.shot-pair > figure { flex: 1 1 240px; min-width: 0; }
+.num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--num-bg); color: var(--num-text); font-weight: 700; font-size: 16px; flex: none; }
+.shot { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; box-sizing: border-box; box-shadow: var(--shot-shadow); }
+
+/* Built for everyone strip */
+.features { padding: 32px 24px; background: var(--surface-tint); }
+.features-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 48px; }
+.features-title { font-weight: 700; font-size: 17px; flex: 0 0 auto; }
+.features-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 36px; font-size: 15px; }
+
+/* About */
+#about { padding: 72px 24px; }
+.about-inner { display: flex; flex-wrap: wrap; gap: 24px 64px; }
+.about-inner h2 { flex: 0 1 280px; }
+.about-body { flex: 1 1 560px; min-width: 0; max-width: 760px; display: flex; flex-direction: column; gap: 18px; font-size: 17px; }
+
+/* System requirements */
+#requirements { padding: 56px 24px 72px; border-top: 1px solid var(--rule); }
+.req-inner { display: flex; flex-direction: column; gap: 24px; }
+.req-groups { display: flex; flex-wrap: wrap; gap: 32px 48px; }
+.req-group { flex: 1 1 100%; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.req-group h3 { font-size: 18px; }
+.table-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: var(--th-bg); color: var(--th-text); font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+td:first-child { font-weight: 700; white-space: nowrap; }
+ul.req { margin: 0; padding-left: 20px; }
+ul.req li { margin: 4px 0; }
+
+/* Operating-system switch: three radio buttons styled as a segmented control. Pure CSS, so
+   it works without JavaScript; the radios stay in the tab order, visually hidden, and the
+   checked one shows its panel through the sibling combinator. */
+.os-req { border: 0; margin: 0; padding: 0; min-width: 0; }
+.seg-group { display: flex; }
+.seg { font: inherit; font-weight: 500; padding: 10px 22px; min-height: 44px; box-sizing: border-box; border: 2px solid var(--control-border); background: var(--control-bg); color: var(--control-text); cursor: pointer; border-radius: 0; flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
+.seg:first-child { border-radius: 8px 0 0 8px; }
+.seg:last-child { border-radius: 0 8px 8px 0; }
+.os-panel { display: none; margin-top: 8px; }
+.os-panel h3 { font-size: 18px; }
+#os-windows:checked ~ .os-panel-windows, #os-macos:checked ~ .os-panel-macos, #os-linux:checked ~ .os-panel-linux { display: block; }
+#os-windows:checked ~ .seg-group .seg[for="os-windows"], #os-macos:checked ~ .seg-group .seg[for="os-macos"], #os-linux:checked ~ .seg-group .seg[for="os-linux"] { background: var(--control-on-bg); color: var(--control-on-text); border-color: var(--control-on-border); }
+#os-windows:focus-visible ~ .seg-group .seg[for="os-windows"], #os-macos:focus-visible ~ .seg-group .seg[for="os-macos"], #os-linux:focus-visible ~ .seg-group .seg[for="os-linux"] { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* Learn more */
+.more { padding: 56px 24px 72px; background: var(--surface-tint); }
+.more-inner { display: flex; flex-direction: column; gap: 24px; }
+.tiles { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px; }
+.tiles li { flex: 1 1 200px; min-width: 0; }
+.tile { display: flex; flex-direction: column; gap: 12px; padding: 20px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; text-decoration: none; font-weight: 500; min-height: 140px; align-items: center; text-align: center; }
+.tile-logo { height: 56px; display: flex; align-items: center; justify-content: center; background: var(--tile-logo-bg); }
+.tile-logo img { display: block; max-height: 100%; max-width: 100%; height: 48px; width: auto; }
+@media (prefers-color-scheme: dark) { .tile-logo { border-radius: 4px; padding: 4px 10px; } }
+
+/* Accessibility statement */
+#accessibility { padding: 56px 24px 72px; }
+.statement { max-width: 760px; display: flex; flex-direction: column; gap: 14px; }
+.statement h3 { font-size: 18px; margin: 10px 0 0; }
+.statement ul { margin: 0; padding-left: 20px; }
+.statement li { margin: 4px 0; }
+
+/* Footer */
+.site-footer { background: var(--footer-bg); border-top: var(--footer-border); color: var(--ink-on-navy); padding: 40px 24px 48px; font-size: 14px; }
+.footer-inner { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-start; justify-content: space-between; }
+.footer-about { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.eu-mark { display: block; background: var(--white); padding: 6px 8px; border-radius: 4px; }
+.footer-muted { color: var(--muted-on-navy); }
+.footer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-desktop { display: none; }
+  .nav-mobile { display: block; margin-left: auto; }
+}
+@media (max-width: 640px) {
+  table, tbody, tr, td { display: block; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+  td { border: 0; padding: 4px 0; }
+  td:first-child { font-size: 17px; white-space: normal; padding: 0 0 8px; margin-bottom: 6px; border-bottom: 1px solid var(--line); }
+  td[data-label]::before { content: attr(data-label); display: block; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; font-weight: 700; color: var(--text-muted); }
+  .tile { min-height: 0; }
+}
+@media (max-width: 480px) {
+  .brand-sub { display: none; }
+  .hero h1 { font-size: 34px; }
+  #download { padding: 40px 20px 40px; }
+  .nav .brand { gap: 10px; }
+  .brand-wordmark { width: 140px; height: 23px; }
+  .seg { padding: 10px 6px; min-width: 0; }
+  th { display: block; }
+}

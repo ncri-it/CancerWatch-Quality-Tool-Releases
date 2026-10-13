@@ -1,0 +1,108 @@
+name: Deploy download page
+
+# Manual dispatch only until the first live page has been checked. To redeploy on every
+# published release afterwards, add:
+#
+#   release:
+#     types: [published]
+#
+# The Pages source in the repository settings must be "GitHub Actions" for this to deploy.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  # Velopack asset names: {packId}-win-Setup.exe, {packId}-osx-Setup.pkg and, for the
+  # default Linux channel, {packId}.AppImage. The download buttons link to these names
+  # under releases/latest/download/, so a rename here must be mirrored in site/index.html.
+  # Windows and Linux are required; macOS is optional and the page shows a "Coming soon"
+  # slot until a release carries it.
+  WINDOWS_ASSET: ECIS.CancerWatchQualityTool-win-Setup.exe
+  MACOS_ASSET: ECIS.CancerWatchQualityTool-osx-Setup.pkg
+  LINUX_ASSET: ECIS.CancerWatchQualityTool.AppImage
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the latest release
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if ! release=$(gh api "repos/${GITHUB_REPOSITORY}/releases/latest" 2>/dev/null); then
+            echo "::error::No published release found. Publish one first; drafts and pre-releases do not count." >&2
+            exit 1
+          fi
+          tag=$(jq -r '.tag_name' <<<"$release")
+          version="${tag#v}"
+          published=$(jq -r '.published_at' <<<"$release")
+          release_date=$(date -u -d "$published" '+%-d %b %Y')
+
+          # Size of one asset as whole megabytes; empty when the asset is absent.
+          size_of() {
+            local bytes
+            bytes=$(jq -r --arg n "$1" '.assets[] | select(.name == $n) | .size' <<<"$release")
+            [ -n "$bytes" ] && awk -v b="$bytes" 'BEGIN { printf "%d MB", int(b / 1048576 + 0.5) }' || true
+          }
+
+          # Bare assignments, so a failure fails this step under set -e.
+          windows_size=$(size_of "$WINDOWS_ASSET")
+          linux_size=$(size_of "$LINUX_ASSET")
+          macos_size=$(size_of "$MACOS_ASSET")
+          for required in WINDOWS LINUX; do
+            var="${required,,}_size"
+            if [ -z "${!var}" ]; then
+              asset="${required}_ASSET"
+              echo "::error::${!asset} is not on release $tag. Every deploy needs the Windows and Linux installers." >&2
+              exit 1
+            fi
+          done
+          if [ -z "$macos_size" ]; then
+            echo "::notice::$MACOS_ASSET is not on release $tag; the page will show the macOS slot as coming soon."
+          fi
+
+          {
+            echo "version=$version"
+            echo "release_date=$release_date"
+            echo "windows_size=$windows_size"
+            echo "macos_size=$macos_size"
+            echo "linux_size=$linux_size"
+          } >> "$GITHUB_OUTPUT"
+          echo "Latest release: $tag, published $release_date"
+
+      - name: Build the page
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
+          RELEASE_DATE: ${{ steps.release.outputs.release_date }}
+          WINDOWS_SIZE: ${{ steps.release.outputs.windows_size }}
+          MACOS_SIZE: ${{ steps.release.outputs.macos_size }}
+          LINUX_SIZE: ${{ steps.release.outputs.linux_size }}
+        run: bash scripts/build-page.sh site build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
