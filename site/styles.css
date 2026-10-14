@@ -183,8 +183,9 @@ figcaption { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
 .hero-inner > *:nth-child(2) { animation-delay: .2s; }
 .hero-inner > *:nth-child(3) { animation-delay: .26s; }
 .hero-inner > *:nth-child(4) { animation-delay: .32s; }
-.dl { transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease, border-color .15s ease; }
-.dl-primary:hover, .dl-primary:focus-visible { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
+.dl { transition: box-shadow .15s ease, background-color .15s ease, border-color .15s ease; }
+/* No transform on hover: Firefox re-rasterises moving text, so the label appeared to jump. */
+.dl-primary:hover, .dl-primary:focus-visible { box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
 @media (prefers-reduced-motion: reduce) {
   .hero-copy > *, .hero-inner > *:not(:first-child) { animation: none; }
   .dl, .nav nav a::after { transition: none; }
