@@ -1,79 +1,60 @@
-# CancerWatch Quality Tool Releases
-<img width="1017" height="620" alt="image" src="https://github.com/user-attachments/assets/99a8a8aa-df71-4846-8787-91b6acf362f3" />
+<p align="center">
+  <img src="site/img/logo.png" alt="" width="80" height="70"><br>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="site/img/wordmark-light.png">
+    <img src="site/img/wordmark.png" alt="" width="258" height="42">
+  </picture>
+</p>
 
-## What is CancerWatch?
-CancerWatch is a Joint Action supporting Europe’s Beating Cancer Plan. Its primary goal is to improve the quality and timeliness of cancer 
-registry data collected by the members of European Network of Cancer Registries. By innovating registration processes and addressing data 
-disparities, CancerWatch will make more accurate and comparable insights available through the 
-[European Cancer Information System (ECIS)](https://ecis.jrc.ec.europa.eu/) and the new 
-[European Health Data Space](https://www.european-health-data-space.com/). Ultimately, this initiative will enhance our understanding of 
-cancer trends and support more effective cancer policies and research across Europe.
+<h1 align="center">CancerWatch Quality Tool</h1>
 
-For more information on CancerWatch, visit the official website: https://cancerwatch.eu/
+<p align="center"><b>Quality assurance for European cancer registry data</b></p>
 
-## What is the CancerWatch Quality Tool?
-This is a tool intended for use in population-based cancer registries that submit data to ECIS. 
+<p align="center">Validate registry submissions against the ENCR protocol rules before you send them to ECIS:<br>errors, warnings and data-quality indicators in a single run, entirely on your own computer.</p>
 
-<img width="1426" height="742" alt="image" src="https://github.com/user-attachments/assets/497a9101-0817-410a-94ba-d36b638cbaf0" />
+<p align="center"><b><a href="https://ncri-it.github.io/CancerWatch-Quality-Tool-Releases/">Download the CancerWatch Quality Tool</a></b></p>
 
-It can be downloaded and run on a user's computer, without connecting to the internet, to assess cancer data. This assessment involves
-performance indicators which can be used to feed back into a registry's overall data quality.
+## Download
 
-<img width="1346" height="723" alt="image" src="https://github.com/user-attachments/assets/4e1868c2-243a-4fd5-acb6-0b140a70da23" />
+| Windows | macOS | Linux |
+|:---:|:---:|:---:|
+| **[Download for Windows](https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases/latest/download/ECIS.CancerWatchQualityTool-win-Setup.exe)** | Coming soon | **[Download for Linux](https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases/latest/download/ECIS.CancerWatchQualityTool.AppImage)** |
+| Windows 10 or 11, 64-bit, no administrator rights needed | macOS 14 Sonoma or later, signed and notarised | AppImage, Ubuntu 22.04 or later and other glibc distributions |
 
-A guide to getting started using this application is contained within the tool.
+> [!NOTE]
+> The macOS version is in preparation. The [download page](https://ncri-it.github.io/CancerWatch-Quality-Tool-Releases/) shows which versions are available and is always current for the latest release; all versions and their release notes are under [Releases](https://github.com/ncri-it/CancerWatch-Quality-Tool-Releases/releases).
 
-### Features
-#### Security
-- Personal identifiable data, such as patient health records, never leave the user's computer
-- No requirement for an internet connection
+- Patient data never leaves your computer
+- No internet connection required
+- Free and open source, EUPL 1.2 licence
 
-#### Design/UI
-- Light/dark mode toggle
-- Resizeable page contents (zoom up to 200%)
-- Built to
-  - comply with [web content accessibility guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/), v2.1
-  - support keyboard-only navigation
-  - work with modern screen reader and speech recognition software
+## What it is
 
-### Hardware requirements
- 
-  | | Minimum | Recommended |
-  | --- | --- | --- |
-  | Processor | 64-bit x64, 2 cores | 4 or more cores. Validation runs in parallel across every core, so more cores make large files faster. |
-  | Memory (RAM) | 4 GB (estimate) | 8 GB or more. The app runs three processes plus a web view, and holds up to 100k records in memory at a time. Memory use doesn't grow with file size. |
-  | Disk space (for installation) | About 250 MB (estimate) | 1 GB |
-  | Disk space (for everyday running) | Will vary with the size of the registry data. | At least 10 GB free. The largest file the app accepts (3 GB) needs 3×3 = 9 GB free. |
-  | Display | 1280×720 | 1920×1080 |
-  | Network | None needed. Everything runs on the local machine. The app only talks to itself over localhost, so security software must allow that. | Internet access only if you use the automatic update checks. |
+CancerWatch is a Joint Action supporting Europe's Beating Cancer Plan. Its primary goal is to
+improve the quality and timeliness of cancer registry data collected by the members of the
+European Network of Cancer Registries. By innovating registration processes and addressing data
+disparities, CancerWatch will make more accurate and comparable insights available through the
+[European Cancer Information System (ECIS)](https://ecis.jrc.ec.europa.eu/) and the new
+[European Health Data Space](https://health.ec.europa.eu/ehealth-digital-health-and-care/european-health-data-space-regulation-ehds_en).
 
-### Software requirements
-#### Windows
-  - _Operating system:_ Windows 10 or Windows 11, 64-bit. Windows 10 is only realistic with Extended Security Updates, since mainstream support ended in October 2025.
-  - _Microsoft Edge WebView2 Runtime:_ This comes as standard with Windows 11 and with up-to-date Windows 10.
-  - _Permissions:_ no administrator rights needed, because the installer uses the PerUser location.
+The Quality Tool is intended for population-based cancer registries that submit data to ECIS. It
+is downloaded and run on the user's own computer, with no internet connection, to assess a data
+file before submission and to feed performance indicators back into the registry's overall data
+quality work. A Getting Started guide inside the tool explains how to prepare a file.
 
-#### MacOS
-  - _Operating system:_ macOS 14 (Sonoma) or later, the oldest version .NET 10 supports.
-  - _Signing and notarisation:_ Apple Gatekeeper may block this app, to circumvent, users have to go through System Settings &LongRightArrow; Privacy & Security &LongRightArrow;
-    Open Anyway.
+For more about the Joint Action, visit [cancerwatch.eu](https://cancerwatch.eu/).
 
-#### Linux
-  - _Distribution:_ a desktop distribution based on glibc that .NET 10 supports, for example Ubuntu [22.04](https://releases.ubuntu.com/jammy/) or [24.04](https://releases.ubuntu.com/noble/), [Debian](https://www.debian.org/distrib/)
-    12 or later, [Fedora](https://fedoraproject.org/workstation/), [RHEL](https://developers.redhat.com/products/rhel/download) 8/9/10, or [openSUSE Leap 15.6](https://get.opensuse.org/leap/16.0/). Alpine and other musl-based
-    distributions won't work, because the build targets glibc.
-  - _Desktop session:_ a graphical desktop (X11 or Wayland). The app can't run on a headless server.
-  - _Required packages:_
-    - [libwebkit2gtk-4.1](https://packages.debian.org/sid/libwebkit2gtk-4.1-dev) and [GTK 3](https://www.gtk.org/docs/installations/linux), needed to draw the window (Ubuntu/Debian: libwebkit2gtk-4.1-0)
-    - libicu, needed by .NET for regional formatting, because the app doesn't switch that feature off (Ubuntu/Debian: libicu74 or whichever version the distribution provides)
-  - _AppImage:_ Velopack ships a Linux AppImage. Some distributions need FUSE 2 (libfuse2) to run AppImages, and newer Ubuntu releases don't install it by default. The file also has to be marked as executable (chmod +x).
+## System requirements
 
-### Installer for the latest version
-| Operating System | Installer |
-| --- | --- |
-| Windows | Coming soon... |
-| Linux | Coming soon... |
-| Mac | Coming soon... |
+The hardware requirements, and the operating-system notes for Windows, macOS and Linux, are on the
+[download page](https://ncri-it.github.io/CancerWatch-Quality-Tool-Releases/#requirements).
+
+## Help and feedback
+
+Questions, problems and accessibility feedback: [cancerwatch@ncri.ie](mailto:cancerwatch@ncri.ie).
+The tool's own Contact Support page prepares a diagnostics file to attach.
+
+---
 
 ## The download page
 
@@ -88,15 +69,15 @@ the page never needs editing for a new release.
 
 The _Deploy download page_ workflow (`.github/workflows/deploy-pages.yml`) reads the latest
 published release with `gh api`, fills the placeholders through `scripts/build-page.sh`, and
-deploys the result to GitHub Pages. It needs the repository's Pages source set to _GitHub Actions_
-(Settings, then Pages); until that switch is made, `_config.yml` still builds this README as the
-site. The workflow runs on manual dispatch; the `release: published`
-trigger is commented out in the workflow until the first live page has been checked. The
-workflow fails if the Windows or Linux installer is missing from the latest release. The macOS
-installer is optional: while a release has none, the build keeps the "Coming soon" slot in the
-template (the block between the `MACOS_COMING` markers) instead of the download button (the
-`MACOS_AVAILABLE` block), and the button appears automatically on the first deploy after a
-release carries the file.
+deploys the result to GitHub Pages. The repository's Pages source is set to _GitHub Actions_
+(Settings, then Pages), which only the repository owner's account can change. The workflow runs
+on manual dispatch; the `release: published` trigger is commented out in the workflow and is to be
+enabled once the live page is signed off. The latest-release lookup can lag a publish by about a minute,
+so a dispatch straight after publishing may fail once; run it again. The workflow fails if the
+Windows or Linux installer is missing from the latest release. The macOS installer is optional:
+while a release has none, the build keeps the "Coming soon" slot in the template (the block
+between the `MACOS_COMING` markers) instead of the download button (the `MACOS_AVAILABLE`
+block), and the button appears automatically on the first deploy after a release carries the file.
 
 To preview locally, build with any values and serve the output folder. Leave `MACOS_SIZE` out
 to see the coming-soon state:
@@ -115,9 +96,16 @@ the whole page are not kept in the repository.
 
 ### Other notes
 
-- Fonts: the same two Roboto files the application ships (variable weight 300 to 700, latin and latin-ext) are self-hosted under `site/fonts/` (SIL Open Font License,
+- Fonts: the same two Roboto files the application ships (variable weight 300 to 700, latin and
+  latin-ext) are self-hosted under `site/fonts/` (SIL Open Font License,
   `site/fonts/LICENSE.txt`). The page makes no third-party requests.
 - The support address, cancerwatch@ncri.ie, appears twice in `site/index.html`, in the
   statement and the footer.
 - The accessibility statement at the foot of the page carries the date it was last reviewed.
   Re-check it whenever the page changes.
+
+---
+
+<p align="center"><img src="site/img/eu-mark.png" alt="Co-funded by the European Union" width="195" height="47"></p>
+
+<p align="center">Developed by the National Cancer Registry Ireland for the CancerWatch Joint Action.<br>Licensed under the <a href="https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12">European Union Public Licence, EUPL 1.2</a>.</p>
