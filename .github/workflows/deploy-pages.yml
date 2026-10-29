@@ -37,7 +37,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          if ! release=$(gh api "repos/${GITHUB_REPOSITORY}/releases/latest" 2>/dev/null); then
+          release=""
+          for attempt in 1 2 3 4 5; do
+          if release=$(gh api "repos/${GITHUB_REPOSITORY}/releases/latest" 2>/dev/null); then
+            break
+          fi
+          echo "Latest release not visible yet (attempt $attempt of 5); waiting 20 s"
+          sleep 20
+          done
+          if [ -z "$release" ]; then
             echo "::error::No published release found. Publish one first; drafts and pre-releases do not count." >&2
             exit 1
           fi
