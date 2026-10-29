@@ -1,14 +1,10 @@
 name: Deploy download page
 
-# Manual dispatch only until the first live page has been checked. To redeploy on every
-# published release afterwards, add:
-#
-#   release:
-#     types: [published]
-#
 # The Pages source in the repository settings must be "GitHub Actions" for this to deploy.
 on:
   workflow_dispatch:
+  release:
+    types: [released]
 
 permissions:
   contents: read
