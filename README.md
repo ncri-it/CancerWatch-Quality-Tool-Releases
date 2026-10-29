@@ -71,13 +71,14 @@ The _Deploy download page_ workflow (`.github/workflows/deploy-pages.yml`) reads
 published release with `gh api`, fills the placeholders through `scripts/build-page.sh`, and
 deploys the result to GitHub Pages. The repository's Pages source is set to _GitHub Actions_
 (Settings, then Pages), which only the repository owner's account can change. The workflow runs
-on manual dispatch; the `release: published` trigger is commented out in the workflow and is to be
-enabled once the live page is signed off. The latest-release lookup can lag a publish by about a minute,
-so a dispatch straight after publishing may fail once; run it again. The workflow fails if the
-Windows or Linux installer is missing from the latest release. The macOS installer is optional:
-while a release has none, the build keeps the "Coming soon" slot in the template (the block
-between the `MACOS_COMING` markers) instead of the download button (the `MACOS_AVAILABLE`
-block), and the button appears automatically on the first deploy after a release carries the file.
+on manual dispatch or on the `release: published` trigger. The latest-release lookup can lag a
+publish by about a minute, so the workflow is configured to make five attempts to find the latest
+version, with a lag of 20 seconds between tries. If publishing still fails, run it again. 
+The workflow fails if the Windows or Linux installer is missing from the latest release. 
+The macOS installer is optional: while a release has none, the build keeps the "Coming soon" slot 
+in the template (the block between the `MACOS_COMING` markers) instead of the download button (the 
+`MACOS_AVAILABLE` block), and the button appears automatically on the first deploy after a release 
+carries the file.
 
 To preview locally, build with any values and serve the output folder. Leave `MACOS_SIZE` out
 to see the coming-soon state:
